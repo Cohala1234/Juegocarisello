@@ -18,9 +18,7 @@ var cont = 0;
 
 //iniciamos el juego
 boton.addEventListener('click', ()=>{
-
     opciones.classList.replace("opciones","opcionesAparecer");  
-
 });
 
     caraOpcion.addEventListener("click", () =>{
@@ -30,45 +28,42 @@ boton.addEventListener('click', ()=>{
     selloOpcion.addEventListener("click", () =>{
         iniciarJuego('sello');
     });
-        function iniciarJuego(opcion){
-        //movimiento pc
-        const movPC = movimientoPc();
-        //movimiento usuario
-        const movUsuario = opcion;
-        //comparacion de movimiento
-        const comp = compracion(movPC, movUsuario);
-        //resultado
-        if (comp == 1) {
-            valor = valor * 2;
-            resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+ " y tu tienes un valor de "+valor+"</span>";
 
-        }
-        else if (comp == 2) {
-            valor = valor - valor;
-            resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+ " y tienes un valor de "+valor+"</span>";
-        }
-        
+    function iniciarJuego(opcion){
+    //movimiento pc
+    const movPC = movimientoPc();
+    //movimiento usuario
+    const movUsuario = opcion;
+    //comparacion de movimiento
+    const comp = compracion(movPC, movUsuario);
+    //resultado
+    if (comp == 1) {
+        valor = valor * 2;
+        resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+ " y tu tienes un valor de "+valor+"</span>";
+
     }
-    function movimientoPc(){
-        const opciones = ['cara', 'sello'];
-        const random = Math.floor(Math.random()*2);
-        const mov = opciones[random];
-        return (mov);
+    else if (comp == 2) {
+        valor = valor - valor;
+        resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+ " y tienes un valor de "+valor+"</span>";
     }
+}
+function movimientoPc(){
+    const opciones = ['cara', 'sello'];
+    const random = Math.floor(Math.random()*2);
+    const mov = opciones[random];
+    return (mov);
+}
 
-    function compracion(pc, usuario){
-        switch (usuario+pc){
-            case 'caracara':
-            case 'sellosello':
-                return 1; //gana
-            case 'carasello':
-            case 'sellocara':
-                return 2; //pierde
-        }
+function compracion(pc, usuario){
+    switch (usuario+pc){
+        case 'caracara':
+        case 'sellosello':
+            return 1; //gana
+        case 'carasello':
+        case 'sellocara':
+            return 2; //pierde
     }
-
-    
-
+}
 /*
 const opciones = document.getElementById("opciones");
 
