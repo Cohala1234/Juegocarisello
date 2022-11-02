@@ -6,6 +6,9 @@ header{
     padding: 10px;
     color: #fff;
 }
+img{
+   width: 16em; 
+}
 
 .resultado{
     text-align: center;

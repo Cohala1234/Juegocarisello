@@ -18,9 +18,9 @@
         Vamos a jugar.!
     </div>
 
-    <label for="">¿Cuanto desea apostar?</label>
-    <input type="text" id="valorApostar" value="0" required>
-    <input type="submit" id="apostar" value="Iniciar">
+    <label for="exampleInputEmail1">¿Cuanto desea apostar?</label>
+    <input type="text" class="form-control" id="valorApostar" aria-describedby="emailHelp" placeholder="$0000">
+    <input type="submit" class="btn btn-primary apostar" id="apostar" value="Iniciar">
 
     <div class="opciones" id="opciones">
         <div class="opcion" id="cara">
@@ -31,6 +31,8 @@
             <img src="img/cruz.png" alt="">
         </div>
     </div>
+
+    <input type="submit" class="btn btn-primary terminar" id="terminar" value="Terminar">
 
     <script src="js/main.js"></script>
 </body>

@@ -3,18 +3,17 @@ const opciones = document.getElementById("opciones");
 /*leemos las entradas de las opciones*/
 const caraOpcion = document.getElementById("cara");
 const selloOpcion = document.getElementById("sello");
-
+/*leemos la entrada de los botones*/
 const boton = document.getElementById('apostar');
-
+const terminar = document.getElementById('terminar');
 /*leemos la entrada del resultado*/
 const resultadoJuego = document.getElementById("resultado");
 
 var valor = document.getElementById('valorApostar').value;
 
-var total;
-
-var confirmar = 1;
 var cont = 0;
+
+
 
 //iniciamos el juego
 boton.addEventListener('click', ()=>{
@@ -23,30 +22,32 @@ boton.addEventListener('click', ()=>{
 
     caraOpcion.addEventListener("click", () =>{
         iniciarJuego('cara');
+        cont++
     });
 
     selloOpcion.addEventListener("click", () =>{
         iniciarJuego('sello');
+        cont++
     });
 
     function iniciarJuego(opcion){
-    //movimiento pc
-    const movPC = movimientoPc();
-    //movimiento usuario
-    const movUsuario = opcion;
-    //comparacion de movimiento
-    const comp = compracion(movPC, movUsuario);
-    //resultado
-    if (comp == 1) {
-        valor = valor * 2;
-        resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+ " y tu tienes un valor de "+valor+"</span>";
+        //movimiento pc
+        const movPC = movimientoPc();
+        //movimiento usuario
+        const movUsuario = opcion;
+        //comparacion de movimiento
+        const comp = compracion(movPC, movUsuario);
+        //resultado
+        if (comp == 1) {
+            valor = valor * 2;
+            resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+"</span>";
+        }
+        else if (comp == 2) {
+            valor = valor - valor;
+            resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+"</span>";
+        }
+    }
 
-    }
-    else if (comp == 2) {
-        valor = valor - valor;
-        resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+ " y tienes un valor de "+valor+"</span>";
-    }
-}
 function movimientoPc(){
     const opciones = ['cara', 'sello'];
     const random = Math.floor(Math.random()*2);
@@ -64,6 +65,9 @@ function compracion(pc, usuario){
             return 2; //pierde
     }
 }
+terminar.addEventListener('click', ()=>{
+    alert("Usted tiene un valor de "+cont+" y las veces que jugo fueron "+cont)
+});
 /*
 const opciones = document.getElementById("opciones");
 
