@@ -1,19 +1,32 @@
 body{
-    background: #4e54c8;
+    background: beige;
 }
 
 header{
     padding: 10px;
-    color: #fff;
+    color: beige;
 }
 img{
    width: 16em; 
 }
-
+#valorApostar{
+    width: 21em;
+}
+.formulario{
+    margin-left: 10em;
+}
+#terminar{
+    margin: 0 auto;
+    display: flex;
+    padding: 1em;
+}
+#apostar{
+    margin-top: 1em;
+}
 .resultado{
     text-align: center;
     font-size: 25px;
-    color: #fff;
+    color:#000;
 }
 
 .opciones{

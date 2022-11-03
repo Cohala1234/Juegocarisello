@@ -15,12 +15,14 @@
 
     <!--Aqui se va a visualizar el resultado-->
     <div class="resultado" id="resultado">
-        Vamos a jugar.!
+        <h1>Juego cara y sello</h1>
     </div>
 
-    <label for="exampleInputEmail1">¿Cuanto desea apostar?</label>
-    <input type="number" class="form-control valorApostar" id="valorApostar" aria-describedby="emailHelp" placeholder="$0000">
-    <input type="submit" class="btn btn-primary apostar" id="apostar" value="Iniciar">
+    <div class="formulario">
+        <label for="exampleInputEmail1">¿Cuanto desea apostar?</label>
+        <input type="number" class="form-control valorApostar" id="valorApostar" aria-describedby="emailHelp" placeholder="$0000">
+        <input type="submit" class="btn btn-primary apostar" id="apostar" value="Iniciar">
+    </div>
 
     <div class="opciones" id="opciones">
         <div class="opcion" id="cara">
@@ -30,9 +32,10 @@
         <div class="opcion" id="sello">
             <img src="img/cruz.png" alt="">
         </div>
-    </div>
 
     <input type="submit" class="btn btn-primary terminar" id="terminar" value="Terminar">
+    </div>
+
 
     <script src="js/main.js"></script>
 </body>

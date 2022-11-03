@@ -19,12 +19,12 @@ boton.addEventListener('click', ()=>{
 
 caraOpcion.addEventListener("click", () =>{
     iniciarJuego('cara');
-    cont++
+    
 });
 
 selloOpcion.addEventListener("click", () =>{
     iniciarJuego('sello');
-    cont++
+    
 });
 
 function iniciarJuego(opcion){
@@ -42,11 +42,13 @@ function iniciarJuego(opcion){
         if (comp == 1) {
             total = total + valor;
             resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+"</span>";
+            cont++
         }
         else if (comp == 2) {
             total = total - valor;
             resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+"</span>";
-            if(total <= -100000)
+            cont++
+            if(total <= -10000000)
             {
                 alert("Usted no puede jugar mas, llego a un limite de perdida en el juego");
                 window.location.reload(true);
@@ -79,8 +81,16 @@ function compracion(pc, usuario){
 }
 
 terminar.addEventListener('click', ()=>{
-    alert("Usted tiene un valor de "+total+" y las veces que jugo fueron "+cont);
-    window.location.reload(true);
+    if(total <= 0)
+    {
+        alert("Este no es tu dia, intentalo despues porque debes una cantidad de $"+total+" y las veces que jugo fueron "+cont);
+        window.location.reload(true);
+    }
+    else if(total > 0)
+    {
+        alert("En hora buena, gracias por jugar, te vas con una cantidad de $"+total+" y las veces que jugo fueron "+cont);
+        window.location.reload(true);
+    }
 });
 /*
 const opciones = document.getElementById("opciones");
