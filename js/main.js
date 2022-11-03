@@ -8,29 +8,30 @@ const boton = document.getElementById('apostar');
 const terminar = document.getElementById('terminar');
 /*leemos la entrada del resultado*/
 const resultadoJuego = document.getElementById("resultado");
-
-var valor = document.getElementById('valorApostar').value;
-
-var cont = 0;
-
-
+/*leemos la entrada del campo apostar*/
+/**************************/
+var cont = 0, total = 0;
 
 //iniciamos el juego
 boton.addEventListener('click', ()=>{
     opciones.classList.replace("opciones","opcionesAparecer");  
 });
 
-    caraOpcion.addEventListener("click", () =>{
-        iniciarJuego('cara');
-        cont++
-    });
+caraOpcion.addEventListener("click", () =>{
+    iniciarJuego('cara');
+    cont++
+});
 
-    selloOpcion.addEventListener("click", () =>{
-        iniciarJuego('sello');
-        cont++
-    });
+selloOpcion.addEventListener("click", () =>{
+    iniciarJuego('sello');
+    cont++
+});
 
-    function iniciarJuego(opcion){
+function iniciarJuego(opcion){
+    var valor = document.getElementById('valorApostar').value;
+    valor = parseFloat(valor);
+    if(valor >= 5000)
+    {
         //movimiento pc
         const movPC = movimientoPc();
         //movimiento usuario
@@ -39,14 +40,25 @@ boton.addEventListener('click', ()=>{
         const comp = compracion(movPC, movUsuario);
         //resultado
         if (comp == 1) {
-            valor = valor * 2;
+            total = total + valor;
             resultadoJuego.innerHTML = "<br> <span class='ganador'>Usted a ganado, la moneda cayo en "+ movPC+"</span>";
         }
         else if (comp == 2) {
-            valor = valor - valor;
+            total = total - valor;
             resultadoJuego.innerHTML = "<br> <span class='perdedor'>Usted a perdido, la moneda cayo en "+ movPC+"</span>";
+            if(total <= -100000)
+            {
+                alert("Usted no puede jugar mas, llego a un limite de perdida en el juego");
+                window.location.reload(true);
+            }
         }
     }
+    else if(valor < 5000)
+    {
+        alert("La apuesta debe ser mayor a $5000")
+        window.location.reload(true);
+    }
+}
 
 function movimientoPc(){
     const opciones = ['cara', 'sello'];
@@ -65,8 +77,10 @@ function compracion(pc, usuario){
             return 2; //pierde
     }
 }
+
 terminar.addEventListener('click', ()=>{
-    alert("Usted tiene un valor de "+cont+" y las veces que jugo fueron "+cont)
+    alert("Usted tiene un valor de "+total+" y las veces que jugo fueron "+cont);
+    window.location.reload(true);
 });
 /*
 const opciones = document.getElementById("opciones");
